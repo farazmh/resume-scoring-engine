@@ -1,0 +1,29 @@
+{
+  "name": "resume-scoring-engine",
+  "version": "1.0.0",
+  "description": "Explainable resume and profile scoring API that combines deterministic rules with ML-assisted signals to help hiring teams make consistent decisions.",
+  "main": "server.js",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/farazmh/resume-scoring-engine.git"
+  },
+  "author": "Faraz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/farazmh/resume-scoring-engine/issues"
+  },
+  "homepage": "https://github.com/farazmh/resume-scoring-engine#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "typescript": "^5.9.3",
+    "ts-node-dev": "^2.0.0"
+  }
+}

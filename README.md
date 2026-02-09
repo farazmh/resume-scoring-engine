@@ -1,32 +1,153 @@
 # Resume Scoring Engine
 
-Explainable resume and profile scoring API that combines deterministic rules with ML-assisted signals to help hiring teams make consistent decisions.
+Explainable resume and profile scoring API that combines deterministic rules with ML-assisted signals to help hiring teams make consistent, auditable decisions.
+
+---
 
 ## Problem
+
 Hiring decisions are often subjective, inconsistent, and hard to explain.
-Black-box AI models reduce trust and accountability.
+Pure black-box AI models reduce trust, make audits difficult, and are risky in enterprise hiring workflows.
+
+---
 
 ## Solution
-A scoring engine that:
-- Uses clear, deterministic rules first
-- Augments with lightweight ML signals
-- Produces a transparent score breakdown with explanations
+
+An **explainable scoring engine** that:
+
+* Uses clear, deterministic rules as the primary signal
+* Adds ML-assisted signals only as a bounded boost
+* Produces a transparent score breakdown with human-readable explanations
+
+Rules stay in control. ML assists — it does not decide.
+
+---
 
 ## How It Works
-1. Resume/profile is ingested as structured data
-2. Rule engine scores experience, skills, and role fit
-3. ML layer provides semantic similarity boost
+
+1. Resume or profile data is ingested as structured input
+2. Rule engine scores:
+
+   * Years of experience
+   * Skill match
+   * Role match
+3. ML assist computes a lightweight semantic similarity signal
 4. Scores are weighted and composed into a final decision
 
+---
+
 ## Example Output
+
 ```json
 {
-  "score": 82,
-  "decision": "strong_match",
+  "total": 82,
   "breakdown": {
     "experience": 30,
     "skills": 28,
-    "role_match": 18,
-    "ml_boost": 6
+    "roleMatch": 18
+  },
+  "ml": {
+    "similarity": 0.85,
+    "boost": 6
   }
 }
+```
+
+---
+
+## Why Explainable Matters
+
+* Easier audits and compliance
+* Higher recruiter trust
+* Safer enterprise adoption
+* Clear reasoning during interviews and client discussions
+
+---
+
+## Tech Stack
+
+* Node.js
+* TypeScript
+* Express
+
+---
+
+## Project Structure
+
+```
+src/
+  engine/
+    experience.ts
+    skills.ts
+    roleMatch.ts
+    mlAssist.ts
+    index.ts
+  types.ts
+  server.ts
+```
+
+---
+
+## Setup
+
+### Prerequisites
+
+* Node.js 18+ (Node 22 recommended)
+* npm
+
+### Install dependencies
+
+```bash
+npm install
+```
+
+(Dependencies include `express`, `@types/express`, `typescript`)
+
+### Build
+
+```bash
+npm run build
+```
+
+### Run
+
+```bash
+npm run dev
+```
+
+Server starts on port **3000**.
+
+---
+
+## API Usage
+
+### POST /score
+
+```bash
+curl -X POST http://localhost:3000/score \
+  -H "Content-Type: application/json" \
+  -d '{
+    "profile": {
+      "yearsOfExperience": 11,
+      "skills": ["node.js", "typescript", "oauth", "aws"],
+      "targetRole": "backend engineer"
+    },
+    "resumeText": "Senior backend engineer with IAM and OAuth experience",
+    "requiredSkills": ["node.js", "typescript", "aws"]
+  }'
+```
+
+---
+
+## Design Principles
+
+* Deterministic first, ML second
+* Pure functions
+* No hidden magic
+* Easy to extend, safe to reason about
+
+---
+
+## Status
+
+🚧 MVP complete — designed as a portfolio and interview-ready project.
