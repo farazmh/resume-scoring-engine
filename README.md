@@ -4,6 +4,11 @@ Explainable resume and profile scoring API that combines deterministic rules wit
 
 ---
 
+## 🚀 Badges
+
+![Node.js](https://img.shields.io/badge/Node.js-18%2B-green) ![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue) ![Status](https://img.shields.io/badge/Status-MVP%20Complete-brightgreen) ![Architecture](https://img.shields.io/badge/Architecture-Explainable%20AI-orange)
+---
+
 ## Problem
 
 Hiring decisions are often subjective, inconsistent, and hard to explain.
@@ -141,13 +146,14 @@ curl -X POST http://localhost:3000/score \
 
 ## Design Principles
 
-* Deterministic first, ML second
-* Pure functions
-* No hidden magic
-* Easy to extend, safe to reason about
+-   Deterministic first, ML second
+-   Pure functions
+-   No hidden magic
+-   Easy to extend and reason about
 
----
+------------------------------------------------------------------------
 
-## Status
+## Notes
 
-🚧 MVP complete — designed as a portfolio and interview-ready project.
+This project is intentionally simple and serves as a base to expand into
+ML-driven resume scoring engines.
