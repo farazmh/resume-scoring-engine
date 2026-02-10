@@ -67,6 +67,8 @@ Rules stay in control. ML assists — it does not decide.
 * Safer enterprise adoption
 * Clear reasoning during interviews and client discussions
 
+**Use Case:** Resume triage, recruiter assistance, and early-stage candidate filtering in hiring pipelines.
+
 ---
 
 ## Tech Stack
