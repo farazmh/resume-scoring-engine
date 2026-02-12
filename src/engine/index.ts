@@ -7,6 +7,14 @@ import { mlAssistRoleSimilarity } from "./mlAssist";
 
 export function scoreResume(profile: ResumeProfile, resumeText: string, requiredSkills: string[])
   : { total: number, breakdown: ScoreBreakdown, ml: ReturnType<typeof mlAssistRoleSimilarity> } {
+  
+  //Optional usage if we want to weight different components differently in the future
+  const WEIGHTS = {
+    experience: 1,
+    skills: 1,
+    roleMatch: 1,
+  };
+
   const breakdown: ScoreBreakdown = {
     experience: scoreExperience(profile.yearsOfExperience),
     skills: scoreSkills(profile.skills, requiredSkills),
@@ -16,9 +24,9 @@ export function scoreResume(profile: ResumeProfile, resumeText: string, required
   const ml = mlAssistRoleSimilarity(profile.targetRole, resumeText);
 
   const total =
-    breakdown.experience +
-    breakdown.skills +
-    breakdown.roleMatch +
+    breakdown.experience * WEIGHTS.experience +
+    breakdown.skills * WEIGHTS.skills +
+    breakdown.roleMatch * WEIGHTS.roleMatch +
     ml.boost;
 
   return {
