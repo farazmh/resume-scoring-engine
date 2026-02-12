@@ -153,6 +153,16 @@ curl -X POST http://localhost:3000/score \
 -   No hidden magic
 -   Easy to extend and reason about
 
+---
+
+## Performance
+
+- Scoring execution: O(n) where n = number of required skills
+- Deterministic rules are constant-time operations
+- ML assist operates on bounded input size
+
+Designed for low-latency evaluation in hiring pipelines.
+
 ------------------------------------------------------------------------
 
 ## Notes
